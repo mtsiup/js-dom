@@ -14,9 +14,39 @@ sect.appendChild(para);
 // }
 const linkPara = document.querySelector('p');
 sect.appendChild(linkPara.cloneNode(true));
+linkPara.remove();
+
+para.style.color = 'white';
+para.style.backgroundColor = 'black';
+para.style.padding = '10px';
+para.style.width = '250px';
+para.style.textAlign = 'center';
+
+para.classList.add('formated');
+
+$('.click-me').click( () => $('img').toggle(6000) );
+
+const display=document.querySelector('.display');
+
+document.querySelectorAll('.digits button')
+    .forEach(button => button.addEventListener('click', digitPressed));
+
+function digitPressed(ev) {
+    display.value += ev.target.innerText
+}
 
 
+document.querySelectorAll('.opers button')
+    .forEach(button => button.addEventListener('click', opersPressed));
 
+function opersPressed(ev) {
+    display.value += ev.target.innerText
+}
+
+document.querySelector('.eq').addEventListener('click', calculate);
+function calculate(){
+    display.value = eval(display.value);
+}
 
 const clock = document.querySelector('.clock');
 const showClock = () => clock.innerText = (new Date()).toLocaleTimeString();
